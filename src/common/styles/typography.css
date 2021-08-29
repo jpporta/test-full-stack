@@ -12,7 +12,7 @@ h2 {
   font-size: 21px;
 }
 
-p {
+p, input {
   font-family: "Source Sans Pro", Helvetica;
   font-weight: 300;
   font-size: 16px;

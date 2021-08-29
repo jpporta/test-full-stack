@@ -1,0 +1,25 @@
+.button {
+  width: 210px;
+  height: 67.5px;
+  background-color: #fff;
+  color: #000;
+  border: 3px solid #0001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  border: 3px solid #0003;
+}
+
+.button:focus {
+  border: 3px solid #0008
+}
+
+.disabled,
+.disabled:focus,
+.disabled:hover {
+  color: #0008;
+  border: 3px solid #0001;
+}

@@ -4,6 +4,8 @@ import UserItem from './UserItem/UserItem.component'
 
 import { User } from '../../common/interfaces/user.interface'
 
+import './UserList.component.css'
+
 interface UserListProps {
   users: User[],
 }
