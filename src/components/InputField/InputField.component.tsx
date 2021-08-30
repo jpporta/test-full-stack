@@ -13,7 +13,9 @@ interface InputFieldProps {
 }
 
 const InputField: React.FC<InputFieldProps> = ({ height = 48, width = 300, label, value, onChange, placeholder = 'Search...' }) => {
-  const handleChange: React.ChangeEventHandler = (e) => onChange(e.target.nodeValue);
+  const handleChange: React.ChangeEventHandler = (e) => {
+    onChange((e.target as HTMLInputElement).value)
+  };
   return (
     <div>
       {label && <p>{label}</p>}

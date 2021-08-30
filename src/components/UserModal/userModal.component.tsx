@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { User } from '../../common/interfaces/user.interface'
 import { useGetUser } from '../../hooks/users/useGetUser'
+import { useUpdateUser } from '../../hooks/users/useUpdateUser'
 import Button from '../Button/button.component'
 import InputField from '../InputField/InputField.component'
 
@@ -19,6 +19,7 @@ const UserModal: React.FC<UserModalProps> = ({ id, closeModal, show }) => {
   const [userName, setUserName] = useState<string>('')
   const [userAddress, setUserAddress] = useState<string>('')
   const [userDescription, setUserDescription] = useState<string>('')
+  const updateUser = useUpdateUser();
 
   useEffect(() => {
     setUserName(user?.name || '')
@@ -30,13 +31,13 @@ const UserModal: React.FC<UserModalProps> = ({ id, closeModal, show }) => {
   const [mapboxURL, setMapboxURL] = useState(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/0,0,14,0}/388x352?access_token=${process.env.REACT_APP_MAPBOX_ID}`)
 
   useEffect(() => {
+    console.log('here')
     axios.get(process.env.REACT_APP_LAMBDA_URL || '', {
       params: {
         address: userAddress,
       }
     })
       .then(res => res.data)
-      .then(res => { console.log(res); return res })
       .then(({ lat, lon }) => setCoordinates(c => [lat, lon, c[2], c[3]]))
   }, [userAddress])
 
@@ -45,6 +46,20 @@ const UserModal: React.FC<UserModalProps> = ({ id, closeModal, show }) => {
       setMapboxURL(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${coordinates[0]},${coordinates[1]},${coordinates[2]},${coordinates[3]}/388x352?access_token=${process.env.REACT_APP_MAPBOX_ID}`)
     }
   }, [coordinates])
+
+  const handleSave = () => {
+    updateUser({
+      variables: {
+        input: {
+          id,
+          address: userAddress,
+          name: userName,
+          description: userDescription,
+        }
+      }
+    })
+    closeModal();
+  }
 
   return (
     <>
@@ -78,7 +93,7 @@ const UserModal: React.FC<UserModalProps> = ({ id, closeModal, show }) => {
                 />
                 <InputField
                   value={userDescription}
-                  onChange={(value) => setUserDescription(value || '')}
+                  onChange={(value) => { setUserDescription(value || '') }}
                   label="Description"
                   placeholder="Description"
                   width={466}
@@ -86,7 +101,7 @@ const UserModal: React.FC<UserModalProps> = ({ id, closeModal, show }) => {
               </div>
             </div>
             <div className="actions">
-              <Button label="SAVE" />
+              <Button label="SAVE" onClick={handleSave} />
               <Button label="CANCEL" onClick={closeModal} />
             </div>
           </div>
