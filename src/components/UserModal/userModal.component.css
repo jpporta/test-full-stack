@@ -1,0 +1,55 @@
+.user-modal-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0004;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-modal-container {
+  width: 996px;
+  border-radius: 6px;
+  padding: 48px;
+  height: 543px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.content {
+  height: 252px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 27px;
+}
+
+.actions>div:first-child {
+  margin-right: 46px;
+}
+
+.content .map-container img {
+  width: 388px;
+  height: 252px;
+  border-radius: 6px;
+  border: none;
+}
+
+.fields-container > *:not(:first-child) {
+  margin-top: 25px;
+}
