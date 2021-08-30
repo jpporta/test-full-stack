@@ -14,9 +14,18 @@ const GET_USERS = gql`
   }
 `
 
-export const useGetUsers = (limit = 10, filter = null): User[] | undefined => {
+interface GetUsersParameters {
+  limit?: number,
+  filter?: any,
+}
+
+
+
+export const useGetUsers = ({ limit = 10, filter = null }: GetUsersParameters): User[] | undefined => {
+  console.log(filter)
   const { data } = useQuery(GET_USERS, {
-    variables: { limit, filter: null }
+    variables: { limit, filter }
   })
+  console.log(data?.listUsers?.items)
   return data?.listUsers?.items;
 }
