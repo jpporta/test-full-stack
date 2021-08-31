@@ -1,4 +1,5 @@
 # Test full stack for superformula
+[DEMO](superformula.joaoporta.com)
 To run the project locally:
 `yarn` to install dependencies
 set up .env file with the required environment variables:
@@ -15,3 +16,4 @@ set up .env file with the required environment variables:
 - DynamoDB on AWS
 - AppSync to interface with DynamoDB with GraphQL
 - Lambda Function responsible for getting user latitude and logitude based on address, using mapbox API
+- Demo on Amplify
