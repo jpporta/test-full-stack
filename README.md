@@ -3,10 +3,11 @@ To run the project locally:
 `yarn` to install dependencies
 set up .env file with the required environment variables:
 - REACT_APP_GRAPHQL_URI (URI to AppSync)
-REACT_APP_GRAPHQL_ID=(AppSync ID)
-REACT_APP_GRAPHQL_KEY=(AppSync Secret Key)
-REACT_APP_MAPBOX_ID=(MapBox API id, for getting static maps of user location)
-REACT_APP_LAMBDA_URL=(Lambda URL endpoint)
+- REACT_APP_GRAPHQL_ID=(AppSync ID)
+- REACT_APP_GRAPHQL_KEY=(AppSync Secret Key)
+- REACT_APP_MAPBOX_ID=(MapBox API id, for getting static maps of user location)
+- REACT_APP_LAMBDA_URL=(Lambda URL endpoint)
+
 `yarn dev` to run frontend server locally
 
 
